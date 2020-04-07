@@ -1,0 +1,13 @@
+.header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #fff;
+  background-color: rgba(0, 47, 18, .75);
+  padding: 24px 16px;
+
+  img {
+    width: 100px;
+    height: 100px;
+  }
+}

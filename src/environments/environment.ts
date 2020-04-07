@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  PGA_API: 'https://api.sportsdata.io/golf/v2/json',
+  API_KEY: '8e5dfa91af234daab820a1815e4ba2c5'
 };
 
 /*
