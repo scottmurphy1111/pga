@@ -8,6 +8,10 @@ export const environment = {
   API_KEY: '8e5dfa91af234daab820a1815e4ba2c5'
 };
 
+export const params = {
+  key: environment.API_KEY
+};
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

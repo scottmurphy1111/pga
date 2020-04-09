@@ -1,1 +1,14 @@
-<p>player works!</p>
+<div *ngIf="player$ | async as player">
+  <div class="players-content">
+    <div class="image"><img [src]="player.PhotoUrl" /></div>
+    <h2>{{player.FirstName}} {{player.LastName}}</h2>
+    <div *ngIf="player.Weight"><p>Weight: {{player.Weight}}lbs</p></div>
+    <div *ngIf="player.Swings"><p>Swings: {{player.Swings}}</p></div>
+    <div *ngIf="player.PgaDebut"><p>PGA Debut: {{player.PgaDebut}}</p></div>
+    <div *ngIf="player.Country"><p>Country: {{player.Country}}</p></div>
+    <div *ngIf="player.BirthDate"><p>Birth Date: {{player.BirthDate | date}}</p></div>
+    <div *ngIf="player.BirthCity"><p>Birth City: {{player.BirthCity}}</p></div>
+    <div *ngIf="player.BirthState"><p>Birth State: {{player.BirthState}}</p></div>
+    <div *ngIf="player.College"><p>College: {{player.College}}</p></div>
+  </div>
+</div>

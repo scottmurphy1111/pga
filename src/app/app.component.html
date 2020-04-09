@@ -1,4 +1,9 @@
 <div class="header">
   <span><img src="../assets/golf_ball.png" /></span><h2>PGA Information</h2>
+  <div class="links">
+    <a [routerLink]="['/players']">Players</a>
+    <a [routerLink]="['/tournaments']">Tournaments</a>
+  </div>
 </div>
-<app-players></app-players>
+
+<router-outlet></router-outlet>

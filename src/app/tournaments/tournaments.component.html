@@ -1,0 +1,30 @@
+<ul class="tournaments">
+  <li *ngFor="let tourney of tournaments$ | async">
+    <div *ngIf="tourney.TournamentID">{{tourney.TournamentID}}</div>
+    <div *ngIf="tourney.Name">{{tourney.Name}}</div>
+    <div *ngIf="tourney.StartDate">{{tourney.StartDate | date}}</div>
+    <div *ngIf="tourney.EndDate">{{tourney.EndDate | date}}</div>
+    <div *ngIf="tourney.IsOver">{{tourney.IsOver}}</div>
+    <div *ngIf="tourney.IsInProgress">{{tourney.IsInProgress}}</div>
+    <div *ngIf="tourney.Venue">{{tourney.Venue}}</div>
+    <div *ngIf="tourney.Location">{{tourney.Location}}</div>
+    <div *ngIf="tourney.Par">{{tourney.Par}}</div>
+    <div *ngIf="tourney.Yards">{{tourney.Yards}}</div>
+    <div *ngIf="tourney.Purse">{{tourney.Purse | currency}}</div>
+    <div *ngIf="tourney.StartDateTime">{{tourney.StartDateTime | date}}</div>
+    <div *ngIf="tourney.Canceled">{{tourney.Canceled}}</div>
+    <div *ngIf="tourney.City">{{tourney.City}}</div>
+    <div *ngIf="tourney.State">{{tourney.State}}</div>
+    <div *ngIf="tourney.Country">{{tourney.Country}}</div>
+    <div *ngIf="tourney.Rounds">
+      <ul class="rounds">
+        <div *ngFor="let round of tourney.Rounds">
+          <div *ngIf="round.TournamentID">{{round.TournamentID}}</div>
+          <div *ngIf="round.RoundID">{{round.RoundID}}</div>
+          <div *ngIf="round.Number">{{round.Number}}</div>
+          <div *ngIf="round.Day">{{round.Day | date}}</div>
+        </div>
+      </ul>
+    </div>
+  </li>
+</ul>

@@ -3,7 +3,11 @@
   <input name="search" [ngModel]="search$ | async" (ngModelChange)="doSearch($event)" />
 </span>
 <ul>
-  <li *ngFor="let player of players$ | async">
+  <li
+    *ngFor="let player of searchedPlayers$ | async"
+    [routerLink]="['/player', (player.FirstName+'-'+player.LastName)]"
+    [queryParams]="{'id': player.PlayerID}"
+  >
     <div class="players-content">
       <div class="image"><img [src]="player.PhotoUrl" /></div>
       <h2>{{player.FirstName}} {{player.LastName}}</h2>

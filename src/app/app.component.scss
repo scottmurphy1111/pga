@@ -10,4 +10,15 @@
     width: 100px;
     height: 100px;
   }
+
+  .links {
+    display: flex;
+    width: calc(100% - 330px);
+    justify-content: flex-end;
+
+    a {
+      margin-right: 16px;
+      color: #fff;
+    }
+  }
 }
