@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, shareReplay } from 'rxjs/operators';
+import { catchError, map, shareReplay } from 'rxjs/operators';
 
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { environment, params } from 'src/environments/environment';
 import { Player } from '../models/player';
 
@@ -14,22 +14,23 @@ export class PlayersService {
 
   constructor(private http: HttpClient) {}
 
-  players$ = (() => {
+  getPlayers(): Observable<Player[]> {
+    const url = `${environment.PGA_API}/Players`;
     return this.http
-      .get<Player[]>(`${environment.PGA_API}/Players`, {
-        params
-      })
+      .get<Player[]>(url, { params })
       .pipe(
         shareReplay(1),
-        map((player) => this.getPlayersWithImage(player))
+        map((player) => this.getPlayersWithImage(player)),
+        catchError(err => this.handleError(err))
       );
-  })();
+  }
 
   getSinglePlayer(id: string) {
-    return this.http.get<Player>(`${environment.PGA_API}/Player/${id}`, {
-      params,
-    }).pipe(
-      map(item => item)
+    const url = `${environment.PGA_API}/Player/${id}`;
+    return this.http.get<Player>(url, { params }).pipe(
+      shareReplay(1),
+      map(item => item),
+      catchError(err => this.handleError(err))
     );
   }
 
@@ -50,5 +51,13 @@ export class PlayersService {
 
   clearSearch() {
     this.search$.next('');
+  }
+
+  handleError(err: any) {
+    let errorMessage: string;
+    errorMessage = `An Error Occured ${err.message}`;
+
+    console.error(err);
+    return throwError(errorMessage);
   }
 }

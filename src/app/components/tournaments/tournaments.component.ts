@@ -16,7 +16,7 @@ export class TournamentsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.tournaments$ = this.tournamentsService.tournaments$;
+    this.tournaments$ = this.tournamentsService.getTourneys();
   }
 
   getCurrentYear() {

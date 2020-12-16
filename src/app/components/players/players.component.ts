@@ -29,7 +29,7 @@ export class PlayersComponent implements OnInit, OnDestroy {
   lastPage$ = this.totalPages$.pipe(map(page => page - 1));
 
   ngOnInit() {
-    this.players$ = this.playersService.players$;
+    this.players$ = this.playersService.getPlayers();
     this.search$ = this.playersService.search$;
 
     this.searchedPlayers$ = combineLatest(this.players$, this.search$, this.limit$, this.page$)

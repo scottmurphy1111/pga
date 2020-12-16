@@ -48,7 +48,7 @@ ul {
 }
 
 li {
-  background-color: #fcfcfc;
+  background-color: rgba(252,252,252,0.8);
   display: flex;
   width: calc(100% - 24px);
   min-height: 115px;
@@ -63,7 +63,7 @@ li {
   overflow: hidden;
 
   &:hover {
-    background-color: #f6f6f6;
+    background-color: rgba(246,246,246,0.8);
   }
 
   @media screen and (min-width: 768px) {
