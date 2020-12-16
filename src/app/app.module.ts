@@ -3,13 +3,11 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PlayersComponent } from './players/players.component';
-import { PlayerComponent } from './player/player.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { RequestCacheService } from './request-cache.service';
-import { CachingInterceptorService } from './caching-interceptor.service';
-import { TournamentsComponent } from './tournaments/tournaments.component';
+import { PlayerComponent } from './components/player/player.component';
+import { PlayersComponent } from './components/players/players.component';
+import { TournamentsComponent } from './components/tournaments/tournaments.component';
 
 @NgModule({
   declarations: [
@@ -23,10 +21,6 @@ import { TournamentsComponent } from './tournaments/tournaments.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule
-  ],
-  providers: [
-    RequestCacheService,
-    { provide: HTTP_INTERCEPTORS, useClass: CachingInterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]
 })

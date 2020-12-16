@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, tap, switchMap, distinctUntilChanged, shareReplay } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
 
-import { BehaviorSubject, combineLatest } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { environment, params } from 'src/environments/environment';
-import { Player } from './player';
+import { Player } from '../models/player';
 
 @Injectable({
   providedIn: 'root',
@@ -16,27 +16,24 @@ export class PlayersService {
 
   players$ = (() => {
     return this.http
-      .get<Player>(`${environment.PGA_API}/Players`, {
+      .get<Player[]>(`${environment.PGA_API}/Players`, {
         params
       })
       .pipe(
-        map((player) => this.getGoodPlayers(player)),
-        tap(player => console.log('players', player)),
-        shareReplay(1));
+        shareReplay(1),
+        map((player) => this.getPlayersWithImage(player))
+      );
   })();
 
   getSinglePlayer(id: string) {
     return this.http.get<Player>(`${environment.PGA_API}/Player/${id}`, {
       params,
     }).pipe(
-      map(item => {
-        console.log('item', item);
-        return item;
-      })
+      map(item => item)
     );
   }
 
-  getGoodPlayers(player) {
+  getPlayersWithImage(player: Player[]) {
     return player.filter((item) => {
       if (
         item.PhotoUrl !==

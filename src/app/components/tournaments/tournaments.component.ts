@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { TournamentsService } from '../tournaments.service';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { TournamentsService } from 'src/app/services/tournaments.service';
 
 @Component({
   selector: 'app-tournaments',
@@ -9,6 +9,7 @@ import { TournamentsService } from '../tournaments.service';
 })
 export class TournamentsComponent implements OnInit {
   tournaments$: Observable<any>;
+  currentYear$ = new BehaviorSubject<any>(2020);
 
   constructor(
     private tournamentsService: TournamentsService
@@ -16,7 +17,10 @@ export class TournamentsComponent implements OnInit {
 
   ngOnInit() {
     this.tournaments$ = this.tournamentsService.tournaments$;
-    console.log('tourns', this.tournaments$);
   }
 
+  getCurrentYear() {
+    const currentYear = new Date().getFullYear();
+    this.currentYear$.next(currentYear);
+  }
 }

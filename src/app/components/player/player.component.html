@@ -1,6 +1,6 @@
 <div *ngIf="player$ | async as player">
   <div class="players-content">
-    <div class="image"><img [src]="player.PhotoUrl" /></div>
+    <div class="image"><img [src]="player.PhotoUrl" [alt]="player.FirstName + ' ' + player.LastName" /></div>
     <h2>{{player.FirstName}} {{player.LastName}}</h2>
     <div *ngIf="player.Weight"><p>Weight: {{player.Weight}}lbs</p></div>
     <div *ngIf="player.Swings"><p>Swings: {{player.Swings}}</p></div>
@@ -10,5 +10,11 @@
     <div *ngIf="player.BirthCity"><p>Birth City: {{player.BirthCity}}</p></div>
     <div *ngIf="player.BirthState"><p>Birth State: {{player.BirthState}}</p></div>
     <div *ngIf="player.College"><p>College: {{player.College}}</p></div>
+    <br><br><br><br>
+    <div class="start-over">
+      <a href="/players">Back to Players</a>
+    </div>
   </div>
+
+
 </div>

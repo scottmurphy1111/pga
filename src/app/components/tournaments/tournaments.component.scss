@@ -1,0 +1,93 @@
+.heading {
+  display: flex;
+  justify-content: center;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  justify-content: flex-start;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  background-color: rgba(240,244,241,0.8);
+  display: flex;
+  width: calc(100% - 24px);
+  min-height: 200px;
+  flex-basis: calc(100% - 24px);
+  background-blend-mode: overlay;
+  border-radius: 6px;
+  box-sizing: border-box;
+  margin: 0 12px 32px;
+  padding: 0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+
+  @media screen and (min-width: 768px) {
+    width: calc(33.3333% - 24px);
+    flex-basis: calc(33.3333% - 24px);
+  }
+
+  .bg-image {
+    background-image: url(../../../assets/golf-tee.png);
+    background-size: 47%;
+    width: 25px;
+    min-height: 119px;
+    opacity: 0.5;
+    background-repeat: no-repeat;
+    background-color: rgba(80, 80, 80, 0.25);
+    background-position: 50% 50%;
+    padding: 0 12px;
+  }
+
+  .tourney-content {
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 2.4rem 1.6rem;
+
+    h3 {
+      margin: 0 0 0.8rem;
+    }
+
+    .date {
+      font-weight: 100;
+      font-size: 14px;
+      margin: 0 0 1.6rem;
+    }
+
+    h4 {
+      font-size: 20px;
+      font-weight: 400;
+      margin: 0;
+    }
+
+    .venue {
+      margin-bottom: 1.6rem;
+    }
+
+    .yards {
+      font-size: 14px;
+      font-weight: 100;
+    }
+
+    .purse {
+      color: rgb(20, 100, 50);
+      font-weight: 900;
+
+      p {
+        margin: 0;
+      }
+
+      span {
+        color: #141414;
+      }
+    }
+  }
+}

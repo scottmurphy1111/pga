@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Player } from '../player';
-import { PlayersService } from '../players.service';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { Player } from 'src/app/models/player';
+import { PlayersService } from 'src/app/services/players.service';
 
 @Component({
   selector: 'app-player',
@@ -16,11 +16,11 @@ export class PlayerComponent implements OnInit {
 
   constructor(
     private playersService: PlayersService,
-    private activatedroute: ActivatedRoute
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.player$ = this.activatedroute.queryParamMap.pipe(
+    this.player$ = this.activatedRoute.queryParamMap.pipe(
       switchMap(params => {
         const id = params.get('id');
         return this.getPlayer(id);

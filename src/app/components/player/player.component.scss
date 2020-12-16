@@ -1,0 +1,24 @@
+.players-content {
+  position: relative;
+  z-index: 2;
+  padding: 24px;
+  box-sizing: border-box;
+  min-height: 90vh;
+}
+
+.start-over {
+  a {
+    color: #444;
+    text-decoration: none;
+    position: relative;
+    padding-left: 22px;
+  }
+
+  :after {
+    content: "⤺";
+    display: inline-block;
+    top: 0px;
+    position: absolute;
+    left: 0;
+  }
+}
