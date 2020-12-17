@@ -1,22 +1,57 @@
+@import 'mixins';
+
 .page-wrapper {
   background: url(../assets/pga-seal.png) no-repeat 50% 50%;
-  background-size: 30%;
+  background-size: 350px;
   display: block;
   width: 100%;
   height: 100vh;
   position: fixed;
   overflow-y: scroll;
+
+  @include bp('md') {
+    background-size: 500px;
+  }
 }
 
 .header {
   display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-basis: 100%;
   justify-content: flex-start;
   align-items: center;
   color: #fff;
   background-color: rgb(20, 100, 50);
   padding: 24px 16px;
+  box-sizing: border-box;
+
+  @include bp('md') {
+    flex-direction: row;
+  }
+
+  .title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include bp('md') {
+      width: 440px;
+      justify-content: flex-start;
+    }
+  }
+
+  .golf-ball {
+    background: url(../assets/golf-ball.png) no-repeat;
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    display: inline;
+  }
 
   h2 {
+    margin: 0;
     a {
       font-family: "Russo One", sans-serif;
       letter-spacing: 1px;
@@ -26,15 +61,15 @@
     }
   }
 
-  img {
-    width: 100px;
-    height: 100px;
-  }
-
   .links {
     display: flex;
-    width: calc(100% - 330px);
-    justify-content: flex-end;
+    width: 100%;
+    justify-content: space-evenly;
+
+    @include bp('md') {
+      width: calc(100% - 440px);
+      justify-content: flex-end;
+    }
 
     a {
       margin-right: 16px;
