@@ -17,6 +17,10 @@ const routes: Routes = [
   {
     path: 'tournaments',
     component: TournamentsComponent
+  },
+  {
+    path: '**',
+    component: PlayersComponent
   }
 ];
 
