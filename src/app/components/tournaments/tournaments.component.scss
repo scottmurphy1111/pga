@@ -33,6 +33,14 @@ li {
     flex-basis: calc(33.3333% - 24px);
   }
 
+  .status {
+    color: rgb(223, 18, 18);
+  }
+
+  &.in-progress {
+    background-color: rgba(240,255,241,0.8);
+  }
+
   .bg-image {
     background-image: url(../../../assets/golf-tee.png);
     background-size: 47%;
@@ -56,6 +64,15 @@ li {
 
     h3 {
       margin: 0 0 0.8rem;
+
+      .status {
+        font-size: 16px;
+        margin-left: 8px;
+
+        &.in-progress {
+          color: rgb(223, 18, 18);
+        }
+      }
     }
 
     .date {

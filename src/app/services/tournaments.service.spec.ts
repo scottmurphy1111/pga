@@ -8,11 +8,11 @@ import { TournamentsService } from './tournaments.service';
 
 const tourneys = <any>[
   {
-    StartDate: '2020-02-01',
+    StartDate: '2021-11-16T00:00:00',
     TournamentID: 2
   },
   {
-    StartDate: '2020-01-01',
+    StartDate: '2021-11-09T00:00:00',
     TournamentID: 1
   }
 ];
@@ -55,14 +55,44 @@ describe('TournamentsService', () => {
 
     expect(getTourneys).toEqual([
       {
-        StartDate: '2020-01-01',
+        StartDate: '2021-11-09T00:00:00',
         TournamentID: 1
       },
       {
-        StartDate: '2020-02-01',
+        StartDate: '2021-11-16T00:00:00',
         TournamentID: 2
       }
     ]);
+  });
+
+  it('should add upcoming to this week\'s tourney', () => {
+    const currentDate = new Date();
+    const startDate = currentDate.getTime() + 1 * 24 * 60 * 60 * 1000;
+    const endDate = currentDate.getTime() + 5 * 24 * 60 * 60 * 1000;
+
+    const currentTourneys = <any>[
+      {
+        StartDate: startDate,
+        EndDate: endDate,
+        TournamentID: 1
+      },
+      {
+        StartDate: '2021-11-09T00:00:00',
+        EndDate: '2021-11-13T00:00:00',
+        TournamentID: 2
+      }
+    ];
+
+    const isUpcoming = tournamentsService.isUpcoming(currentTourneys);
+
+    expect(isUpcoming).toEqual([
+      {
+        StartDate: startDate,
+        EndDate: endDate,
+        TournamentID: 1,
+        upcoming: true
+      }
+    ])
   });
 
   it('should handle error', () => {

@@ -2,11 +2,11 @@
   <h2>{{currentYear$ | async}} - {{(currentYear$ | async) + 1}} Tournaments</h2>
 </div>
 <ul class="tournaments">
-  <li *ngFor="let tourney of tournaments$ | async">
+  <li *ngFor="let tourney of tournaments$ | async" [ngClass]="{'in-progress': tourney.IsInProgress, 'upcoming': tourney.upcoming}">
     <div class="bg-image"></div>
     <div class="tourney-content">
       <div *ngIf="tourney.Name">
-        <h3> {{tourney.Name}}</h3>
+        <h3> {{tourney.Name}}<span *ngIf="tourney.IsInProgress" class="status in-progress">(Currently in Progress)</span><span *ngIf="tourney.upcoming" class="status">(Starting this Week)</span></h3>
       </div>
       <div *ngIf="tourney.StartDate"><p class="date">{{tourney.StartDate | date}}</p></div>
       <div class="venue" *ngIf="tourney.Venue">

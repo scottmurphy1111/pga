@@ -15,4 +15,5 @@ export interface Tournament {
   City: string;
   State: string;
   Country: string;
+  upcoming: boolean;
 }
