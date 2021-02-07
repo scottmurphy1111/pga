@@ -20,16 +20,23 @@
   </span>
 </div>
 <div class="players-wrapper">
-  <ul>
-    <li *ngFor="let player of searchedPlayers$ | async"
-      [routerLink]="['/player', (player.FirstName+'-'+player.LastName)]" [queryParams]="{'id': player.PlayerID}">
-      <div class="players-content">
-        <div class="bg-image"></div>
-        <div class="image"><img [src]="player.PhotoUrl" [alt]="player.FirstName + ' ' + player.LastName" /></div>
-        <h2>{{player.FirstName}} {{player.LastName}}</h2>
-      </div>
-    </li>
-  </ul>
+  <ng-container *ngIf="searchedPlayers$ | async; else loading">
+    <ul>
+      <li *ngFor="let player of searchedPlayers$ | async"
+        [routerLink]="['/player', (player.FirstName+'-'+player.LastName)]" [queryParams]="{'id': player.PlayerID}">
+        <div class="players-content">
+          <div class="bg-image"></div>
+          <div class="image"><img [src]="player.PhotoUrl" [alt]="player.FirstName + ' ' + player.LastName" /></div>
+          <h2>{{player.FirstName}} {{player.LastName}}</h2>
+        </div>
+      </li>
+    </ul>
+  </ng-container>
+  <ng-template #loading>
+    <div class="loading">
+      Loading Players...
+    </div>
+  </ng-template>
 </div>
 <footer>
   <span for="page">Page {{displayPage$ | async}} of {{totalPages$ | async}} </span>
